@@ -103,6 +103,21 @@
             margin-top: 30px;
         }
 
+        @media (max-width: 768px) {
+            .button {
+                font-size: 24px; /* Smaller font size for tablets/medium phones */
+                padding: 8px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button {
+                font-size: 20px; /* Even smaller font size for very small phones */
+                padding: 6px 16px;
+                margin-top: 20px;
+            }
+        }
+
         .button:hover {
             color: #666666;
         }
@@ -421,6 +436,70 @@
         @media (max-width: 768px) {
             .title svg {
                 max-width: 400px; /* Smaller size for mobile */
+            }
+        }
+
+        /* Add new media query for very small screens */
+        @media (max-width: 480px) {
+            .title svg {
+                max-width: 300px; /* Smaller size for very small phones */
+                height: auto;
+            }
+            
+            .subtitle {
+                font-size: 24px; /* Reduce subtitle size as well for better proportion */
+                margin-bottom: 40px; /* Adjust margin to maintain spacing */
+            }
+        }
+
+        /* Contact button in footer */
+        .contact-button {
+            margin-left: auto;
+            background: white;
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        /* Add media query for very small screens */
+        @media (max-width: 480px) {
+            .footer {
+                padding: 15px;
+                gap: 6px;
+            }
+
+            .footer span {
+                font-size: 10px;
+            }
+
+            .contact-button {
+                padding: 6px 12px;
+                font-size: 10px;
+            }
+        }
+
+        /* Additional breakpoint for extra small screens */
+        @media (max-width: 360px) {
+            .footer {
+                padding: 12px;
+                gap: 4px;
+            }
+
+            .footer img {
+                width: 14px;
+                height: 14px;
+            }
+
+            .footer span {
+                font-size: 9px;
+            }
+
+            .contact-button {
+                padding: 4px 8px;
+                font-size: 9px;
             }
         }
     </style>
