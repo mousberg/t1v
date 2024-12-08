@@ -30,13 +30,17 @@
     <link rel="canonical" href="https://t1v.co" />
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
+        "@context": "http://schema.org",
         "@type": "Organization",
         "name": "Tier 1 Ventures",
-        "description": "Quantitative venture investment platform using predictive analytics to identify high-potential startups",
         "url": "https://t1v.co",
-        "logo": "https://t1v.co/icns/apple-touch-icon.png",
-        "sameAs": [],
+        "description": "Quantitative venture investment platform using predictive analytics to identify high-potential startups",
+        "knowsAbout": [
+            "Venture Capital",
+            "Quantitative Analysis",
+            "Startup Investment",
+            "AI-Driven Selection"
+        ],
         "contactPoint": {
             "@type": "ContactPoint",
             "email": "david@t1v.co",
@@ -75,6 +79,10 @@
     
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600&family=Plus+Jakarta+Sans:wght@800&display=swap" as="style">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/icns/favicon.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="/icns/footer.svg" as="image" type="image/svg+xml">
     
     <style>
         /* Reset */
