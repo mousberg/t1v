@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Cookie Policy - Tier 1 Ventures</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="icns/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icns/favicon-32x32.png" />
+    <link rel="icon" type="image/x-icon" href="icns/favicon.ico" />
+    <link rel="apple-touch-icon" href="icns/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600&display=swap" 
+          rel="stylesheet"
+          media="print" 
+          onload="this.media='all'">
+    <style>
+        body {
+            font-family: 'Inter Tight', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: radial-gradient(50% 50% at 50% 50%, #262626 0%, rgb(0,0,0) 100%);
+            color: white;
+        }
+        h1 { margin-bottom: 40px; }
+        h2 { margin-top: 30px; }
+        a { color: white; }
+        .back-button {
+            display: inline-block;
+            background: white;
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            margin-top: 40px;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+        }
+    </style>
+    <!-- Cookie Consent -->
+    <script>
+        function createCookieBanner() {
+            const banner = document.createElement('div');
+            banner.style.cssText = `
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.9);
+                color: white;
+                padding: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 1000;
+            `;
+            
+            banner.innerHTML = `
+                <span>We use cookies to analyze our traffic. By clicking "Accept", you consent to our use of cookies. <a href="/cookie-policy.html" style="color: white;">Learn more</a></span>
+                <div>
+                    <button onclick="acceptCookies()" style="
+                        background: white;
+                        color: black;
+                        border: none;
+                        padding: 8px 16px;
+                        margin-left: 10px;
+                        cursor: pointer;
+                    ">Accept</button>
+                    <button onclick="rejectCookies()" style="
+                        background: transparent;
+                        color: white;
+                        border: 1px solid white;
+                        padding: 8px 16px;
+                        margin-left: 10px;
+                        cursor: pointer;
+                    ">Reject</button>
+                </div>
+            `;
+            
+            document.body.appendChild(banner);
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            loadAnalytics();
+            document.querySelector('div[style*="position: fixed"]').remove();
+        }
+
+        function rejectCookies() {
+            localStorage.setItem('cookieConsent', 'rejected');
+            document.querySelector('div[style*="position: fixed"]').remove();
+        }
+
+        function loadAnalytics() {
+            // Google Analytics code
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-G36J2TCYLM');
+        }
+
+        // Check for existing consent
+        window.addEventListener('load', () => {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                createCookieBanner();
+            } else if (consent === 'accepted') {
+                loadAnalytics();
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Cookie Policy</h1>
+    
+    <p>Last updated: December 8, 2024</p>
+
+    <h2>What are cookies?</h2>
+    <p>Cookies are small text files that are stored on your device when you visit our website. They help us provide you with a better experience by remembering your preferences and analyzing how you use our site.</p>
+
+    <h2>How we use cookies</h2>
+    <p>We use cookies for the following purposes:</p>
+    <ul>
+        <li><strong>Analytics (_ga cookies)</strong>: We use Google Analytics to understand how visitors interact with our website. These cookies collect information about how you use our site, helping us improve our services.</li>
+    </ul>
+
+    <h2>Cookies we use</h2>
+    <ul>
+        <li><strong>_ga</strong>: Used to distinguish users (Duration: 2 years)</li>
+        <li><strong>_ga_*</strong>: Used to maintain session state (Duration: 2 years)</li>
+    </ul>
+
+    <h2>Managing cookies</h2>
+    <p>When you first visit our website, you can choose to accept or reject non-essential cookies. You can change your preferences at any time by clearing your browser cookies and reloading the page.</p>
+
+    <h2>Third-party cookies</h2>
+    <p>We use Google Analytics, which sets cookies to help us analyze site usage. Google's privacy policy can be found at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>.</p>
+
+    <h2>Contact us</h2>
+    <p>If you have any questions about our cookie policy, please contact us at <a href="mailto:david@t1v.co">david@t1v.co</a></p>
+
+    <a href="/" class="back-button">Back to Home</a>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G36J2TCYLM"></script>
+</body>
+</html> 

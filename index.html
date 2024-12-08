@@ -65,6 +65,79 @@
           media="print" 
           onload="this.media='all'">
     
+    <!-- Cookie Consent -->
+    <script>
+        function createCookieBanner() {
+            const banner = document.createElement('div');
+            banner.style.cssText = `
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.9);
+                color: white;
+                padding: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 1000;
+            `;
+            
+            banner.innerHTML = `
+                <span>We use cookies to analyze our traffic. By clicking "Accept", you consent to our use of cookies. <a href="/cookie-policy.html" style="color: white;">Learn more</a></span>
+                <div>
+                    <button onclick="acceptCookies()" style="
+                        background: white;
+                        color: black;
+                        border: none;
+                        padding: 8px 16px;
+                        margin-left: 10px;
+                        cursor: pointer;
+                    ">Accept</button>
+                    <button onclick="rejectCookies()" style="
+                        background: transparent;
+                        color: white;
+                        border: 1px solid white;
+                        padding: 8px 16px;
+                        margin-left: 10px;
+                        cursor: pointer;
+                    ">Reject</button>
+                </div>
+            `;
+            
+            document.body.appendChild(banner);
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            loadAnalytics();
+            document.querySelector('div[style*="position: fixed"]').remove();
+        }
+
+        function rejectCookies() {
+            localStorage.setItem('cookieConsent', 'rejected');
+            document.querySelector('div[style*="position: fixed"]').remove();
+        }
+
+        function loadAnalytics() {
+            // Google Analytics code
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-G36J2TCYLM');
+        }
+
+        // Check for existing consent
+        window.addEventListener('load', () => {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                createCookieBanner();
+            } else if (consent === 'accepted') {
+                loadAnalytics();
+            }
+        });
+    </script>
+    
     <style>
         /* Reset */
         * {
@@ -688,11 +761,5 @@
     </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G36J2TCYLM"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-G36J2TCYLM');
-    </script>
 </body>
 </html>
