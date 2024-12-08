@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://t1v.co/sitemap.xml 
