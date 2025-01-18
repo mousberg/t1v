@@ -922,7 +922,7 @@
         
         <footer class="footer">
             <img src="icns/footer.svg" alt="CR" />
-            <span>© 2024 Tier 1 Ventures Ltd.</span>
+            <span>© <script>document.write(new Date().getFullYear())</script> Tier 1 Ventures Ltd.</span>
             <a href="mailto:david@t1v.co" class="contact-button">Contact</a>
         </footer>
     </div>
@@ -1380,5 +1380,10 @@
         color: white;
     }
     </style>
+
+    <script>
+    // Update copyright year
+    document.querySelector('.footer span').textContent = `© ${new Date().getFullYear()} Tier 1 Ventures Ltd.`;
+    </script>
 </body>
 </html>
