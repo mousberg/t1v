@@ -212,6 +212,8 @@
             letter-spacing: -0.02em;
             transition: transform 0.2s, color 0.2s;
             margin-top: 30px;
+            border: none;
+            cursor: pointer;
         }
 
         @media (max-width: 768px) {
@@ -334,6 +336,17 @@
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
             overflow-y: auto;
+            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scroll-behavior: smooth;  /* Add smooth scrolling */
+            -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+            will-change: transform;  /* Hardware acceleration hint */
+            transform: translateZ(0);  /* Force GPU acceleration */
+        }
+
+        /* Hide scrollbar for Chrome/Safari/Opera */
+        .modal-content::-webkit-scrollbar {
+            display: none;
         }
 
         /* Tablet styles */
@@ -408,22 +421,12 @@
         /* Style the suggestions scrollbar as well */
         .suggestions {
             /* Previous styles remain the same... */
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
 
         .suggestions::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .suggestions::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .suggestions::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 3px;
-            border: 2px solid transparent;
+            display: none;
         }
 
         /* Optional: Style the scrollbar on hover */
@@ -472,14 +475,14 @@
         .modal-content input[type="text"],
         .modal-content input[type="email"],
         .modal-content input[type="url"] {
-            width: 100%;
-            height: 48px;
-            padding: 0 20px;
-            font-size: 16px;
+            height: 38px;
+            padding: 0 24px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
             background-color: rgba(187, 187, 187, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 30px;
-            color: rgba(255, 255, 255, 0.7);
+            width: 100%;
         }
 
         /* Radio buttons container */
@@ -729,21 +732,34 @@
             position: absolute;
             background: rgba(0, 0, 0, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            border-radius: 20px;  /* Match input radius */
             max-height: 200px;
             overflow-y: auto;
-            width: 100%;
-            margin-top: 8px;
+            width: calc(100% - 8px);  /* Slightly narrower than input */
+            margin: 4px auto;  /* Center it */
+            left: 4px;  /* Offset to center */
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
         
         .suggestion-item {
-            padding: 12px 20px;
+            padding: 10px 24px;  /* Match input padding */
             cursor: pointer;
-            transition: background-color 0.2s;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 14px;
+            transition: all 0.2s ease;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;  /* Match input text size */
+        }
+        
+        .suggestion-item:first-child {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        
+        .suggestion-item:last-child {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
         }
         
         .suggestion-item:hover {
@@ -791,7 +807,7 @@
         #waitlistForm {
             display: flex;
             flex-direction: column;
-            gap: 28px;  /* Increased gap between form elements */
+            gap: 24px;  /* Consistent gap between all form elements */
         }
 
         /* Input fields and labels */
@@ -799,20 +815,21 @@
             font-size: 14px;
             font-weight: 400;
             color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: block;
         }
 
         .modal-content input[type="text"],
         .modal-content input[type="email"],
         .modal-content input[type="url"] {
-            height: 42px;  /* Taller input fields */
+            height: 38px;
             padding: 0 24px;
-            font-size: 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
             background-color: rgba(187, 187, 187, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 30px;
-            color: rgba(255, 255, 255, 0.7);
+            width: 100%;
         }
 
         /* Name row spacing */
@@ -830,30 +847,33 @@
         .radio-group {
             display: flex;
             flex-direction: column;
-            gap: 20px;  /* More space between radio options */
-            margin-top: 8px;
+            gap: 12px;  /* Reduced gap between radio options */
+            margin-top: 8px;  /* Small space after label */
         }
 
         .radio-option {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
         }
 
         .radio-option input[type="radio"] {
-            width: 20px;  /* Larger radio buttons */
-            height: 20px;
+            width: 16px;  /* Larger radio buttons */
+            height: 16px;
         }
 
         .radio-option label {
-            font-size: 15px;
-            margin: 0;
+            font-size: 13px;
             color: rgba(255, 255, 255, 0.7);
+            margin: 0;
         }
 
         /* Conditional fields */
         .conditional-fields {
-            margin-top: 28px;  /* More space before conditional sections */
+            margin-top: 0;  /* Remove extra margin */
+            display: flex;
+            flex-direction: column;
+            gap: 24px;  /* Match parent form gap */
         }
 
         /* Submit button */
@@ -893,6 +913,92 @@
                 gap: 16px;
             }
         }
+
+        /* Add scroll progress indicator */
+        .modal-content {
+            /* Previous styles remain... */
+            position: relative;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: var(--scroll-progress, 0%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5));
+            border-radius: 2px;
+            transition: width 0.1s;
+            z-index: 1001;
+        }
+
+        /* Input placeholders */
+        .modal-content input::placeholder {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Custom focus styles for all inputs */
+        .modal-content input[type="text"]:focus,
+        .modal-content input[type="email"]:focus,
+        .modal-content input[type="url"]:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        /* Custom focus styles for radio buttons */
+        .radio-option input[type="radio"]:focus {
+            outline: none;
+        }
+
+        .radio-option input[type="radio"]:focus + label {
+            color: rgba(255, 255, 255, 1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        /* Custom radio button appearance */
+        .radio-option input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            margin: 0;
+            position: relative;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .radio-option input[type="radio"]:checked {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Ensure parent has relative positioning */
+        .modal-content > div {
+            position: relative;  /* For absolute positioning of suggestions */
+        }
+
+        /* Optional: Add momentum-based scrolling for Safari */
+        @supports (-webkit-overflow-scrolling: touch) {
+            .modal-content {
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        /* Optimize performance */
+        .modal {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            perspective: 1000;
+            transform-style: preserve-3d;
+        }
     </style>
 </head>
 <body>
@@ -915,9 +1021,9 @@
                 </svg>
             </div>
                 
-            <h2 class="subtitle">Funding Reinvented.</h2>
+            <h2 class="subtitle">Funding Reinvented</h2>
             
-            <a href="#" class="button" id="openForm">Join Waitlist</a>
+            <button class="button" id="openForm">Join Waitlist</button>
         </div>
         
         <footer class="footer">
@@ -953,11 +1059,7 @@
                 <div>
                     <label for="linkedin">LinkedIn Profile (Optional)</label>
                     <input type="text" id="linkedin" name="linkedin" 
-                           placeholder="https://linkedin.com/in/username"
-                           style="background-color: rgba(187, 187, 187, 0.2);
-                                  border: 1px solid rgba(255, 255, 255, 0.05);
-                                  border-radius: 30px;
-                                  color: rgba(255, 255, 255, 0.7);">
+                           placeholder="https://linkedin.com/in/username">
                 </div>
                 
                 <div>
@@ -1234,6 +1336,13 @@
                 this.style.borderColor = 'rgba(255, 255, 255, 0.05)';
             }
         });
+
+        // Add scroll progress tracking
+        const modalContent = document.querySelector('.modal-content');
+        modalContent.addEventListener('scroll', function() {
+            const scrollPercentage = (this.scrollTop / (this.scrollHeight - this.clientHeight)) * 100;
+            this.style.setProperty('--scroll-progress', `${scrollPercentage}%`);
+        });
     </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9TGPF09DD"></script>
@@ -1358,26 +1467,44 @@
         position: absolute;
         background: rgba(0, 0, 0, 0.95);
         border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
+        border-radius: 20px;  /* Match input radius */
         max-height: 200px;
         overflow-y: auto;
-        width: 100%;
-        margin-top: 8px;
+        width: calc(100% - 8px);  /* Slightly narrower than input */
+        margin: 4px auto;  /* Center it */
+        left: 4px;  /* Offset to center */
         z-index: 1000;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .suggestion-item {
-        padding: 12px 20px;
+        padding: 10px 24px;  /* Match input padding */
         cursor: pointer;
-        transition: background-color 0.2s;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 14px;
+        transition: all 0.2s ease;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 13px;  /* Match input text size */
+    }
+
+    .suggestion-item:first-child {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .suggestion-item:last-child {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
     }
 
     .suggestion-item:hover {
         background-color: rgba(255, 255, 255, 0.1);
         color: white;
+    }
+
+    /* Ensure parent has relative positioning */
+    .modal-content > div {
+        position: relative;  /* For absolute positioning of suggestions */
     }
     </style>
 
